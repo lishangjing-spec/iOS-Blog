@@ -227,6 +227,49 @@ Resources
 
 ## 邮箱警告
 
+
+
+<details>
+<summary>项目中存在 UIWebView 的调用</summary>
+<br/>
+**邮箱描述：**
+
+Deprecated API Usage - Apple will stop accepting submissions of apps that use UIWebView APIs . See https://developer.apple.com/documentation/uikit/uiwebview for more information.
+
+**翻译：**
+不推荐使用API-苹果将停止接受使用UIWebView API的应用程序提交。看见https://developer.apple.com/documentation/uikit/uiwebview了解更多信息
+
+**排查方案：**
+通过终端命令，搜索项目中谁用到了 `UIWebView`，将其替换或移除，涉及第三方可通过脚本、升级等方案解决
+
+``` sh
+grep -r "UIWebView" .
+```
+
+**解决方案：**
+
+Cocoapods 涉及的库，都可以通过在 Podfile 添加脚本解决
+
+可能涉及的依赖：
+- WebViewJavascriptBridge
+    ```
+    pre_install do |installer|
+        dir_web = File.join(installer.sandbox.pod_dir('WebViewJavascriptBridge'), 'WebViewJavascriptBridge')
+        Dir.foreach(dir_web) do |x|
+          real_path = File.join(dir_web, x)
+          if !File.directory?(real_path) && File.exist?(real_path)
+            if x == 'WebViewJavascriptBridge.h' || x == 'WebViewJavascriptBridge.m'
+              File.delete(real_path)
+            end
+          end
+        end
+      end
+    ```
+- AFNetwoking 3.x
+    升级至 4.x
+</details>
+
+
 <details>
 <summary>第三方 SDK 隐私清单和签名（2024年5月1号后上传的app都需要增加隐私描述）</summary>
 <br/>
