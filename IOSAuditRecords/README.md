@@ -4,7 +4,7 @@ iOS - 审核问题记录，所有的问题都可以在 `issues` 上交流
 
 Github：https://github.com/lishangjing-spec/IOSAuditRecords
 
-# 规则跟进渠道
+## 规则跟进渠道
 
 - [Apple 新闻](https://developer.apple.com/cn/news)
 - [Apple 审核指南](https://developer.apple.com/cn/app-store/review/guidelines/)
@@ -16,7 +16,7 @@ Github：https://github.com/lishangjing-spec/IOSAuditRecords
 
 
 
-# 审核问题
+## 审核问题
 
 <details>
 <summary>Guideline 4.3 - Design - Spam</summary>
@@ -80,9 +80,9 @@ The iPad Pro (2nd Gen) and iPad Pro (6th Gen) screenshots show an iPhone image t
 </details>
 
 
----
-
-### Guideline 2.1 - Performance - App Completeness
+<details>
+<summary>Guideline 2.1 - Performance - App Completeness</summary>
+<br/>
 Tag：内购、无法从苹果服务器获取商品信息、response.products.count == 0 
 
 ```
@@ -112,18 +112,19 @@ Support
 ```
 
 
-**苹果反馈：** 在点击内购商品的时候，没有错误提示，没有下一步的操作，无法完成内购行为
+**苹果反馈：** 
+在点击内购商品的时候，没有错误提示，没有下一步的操作，无法完成内购行为
 
 **自行检查：** 
-1. 在苹果的反馈截图中，有错误提示：“无法获取产品信息, 请重试”
-2. 这个错误信息是在苹果 API 回调中触发 `- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response`
-3. 检查所有的内购配置：
+- 在苹果的反馈截图中，有错误提示：“无法获取产品信息, 请重试”
+- 这个错误信息是在苹果 API 回调中触发 
+    `- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response`
+- 检查所有的内购配置：
     1. Xcode 与证书配置中In-App Purchases 开关是打开状态
     2. 协议、税务和银行业务也填写了信息
     3. App 也与内购项目进行了绑定
 
 经过排查后，我认为程序上没有存在问题，可以把问题抛回给苹果，审核人员也是人，也并非不会犯错
-
 回复中所有的涉及的截图不方便展示，根据自身项目进行截图替换文件名
 
 **回复内容：**
@@ -149,11 +150,11 @@ Support
 请您检查并确认后，再次进行测试，感谢
 
 **处理结果：通过审核**
+</details>
 
----
-
-### Guideline 5.1.1 - Legal - Data Collection and Storage
-
+<details>
+<summary>Guideline 5.1.1 - Legal - Data Collection and Storage</summary>
+<br/>
 Tag：内购、Storage
 
 ```
@@ -182,10 +183,11 @@ Resources
 
 **结果：通过审核**
 
----
+</details>
 
-### Guideline 2.5.4 - Performance - Software Requirements
-
+<details>
+<summary>Guideline 2.5.4 - Performance - Software Requirements</summary>
+<br/>
 Tag：UIBackgroundModes、画中画
 
 ```
@@ -221,13 +223,15 @@ Resources
 |![](https://raw.githubusercontent.com/lishangjing-spec/IOSAuditRecords/master/assets/WechatIMG161.jpg) |
 
 **结果：通过审核**
+</details>
 
----
+## 邮箱警告
 
-# 邮件警告
+<details>
+<summary>第三方 SDK 隐私清单和签名（2024年5月1号后上传的app都需要增加隐私描述）</summary>
+<br/>
 
-
-## 第三方 SDK 隐私清单和签名（5月1号后上传的app都需要增加隐私描述）
+## 
 ```
 Hello,
 
@@ -250,17 +254,14 @@ ITMS-91053: Missing API declaration - Your app’s code in the “XXX” file re
 Apple Developer Relations
 
 ```
-
-
-规则更新时间：2023 年 12 月 7 日<br/>
-主要内容：开发者在5月1号后上传的app都需要增加隐私描述<br/>
-[官方文档1](https://developer.apple.com/cn/news/?id=r1henawx)<br/>
-[NSPrivacyAccessedAPITypeReasons 配置 - 官方文档2](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api)<br/>
-三方SDK的应对参考：https://cloud.tencent.com/document/product/269/104138<br/>
-开发者的处理：https://www.jianshu.com/p/633f9778efd7
+规则更新时间：2023 年 12 月 7 日
+主要内容：开发者在5月1号后上传的app都需要增加隐私描述
+- [官方新闻](https://developer.apple.com/cn/news/?id=r1henawx)
+- [NSPrivacyAccessedAPITypeReasons 配置](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api)
+- [三方SDK的应对参考](https://cloud.tencent.com/document/product/269/104138)
+- [开发者文章](https://www.jianshu.com/p/633f9778efd7)
 
 ### 1.1 添加隐私文件
-
 
 |  |  |
 |---|---|
@@ -315,10 +316,6 @@ Apple Developer Relations
 关于 `NSPrivacyAccessedAPITypeReasons` 配置，可查看 [官方文档](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api)
 
 ![](https://raw.githubusercontent.com/lishangjing-spec/IOSAuditRecords/master/assets/17126409112246.jpg)
-
-
-
----
 
 
 
