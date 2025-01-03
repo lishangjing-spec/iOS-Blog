@@ -5,6 +5,10 @@ iOS  工作记录
 - [Xcode 历史版本问题](XcodeVersionIssues/README.md)
 
 
+iOS 升级
+https://www.apple.com/ios/ios-18-preview/
+https://juejin.cn/post/7381645766446579752
+
 --- 
 
 ### M1 电脑通过 Cocoapods 引入三方 SDK 后，无法运行模拟器
